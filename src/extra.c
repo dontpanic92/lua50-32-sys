@@ -18,7 +18,14 @@ void lgetglobal(lua_State *L, const char *s)
     lua_gettable(L, LUA_GLOBALSINDEX);
 }
 
-void lregister(lua_State *L, const char* n, lua_CFunction f)
+void lsetglobal(lua_State *L, const char *s)
+{
+    lua_pushstring(L, s);
+    lua_insert(L, -2);
+    lua_settable(L, LUA_GLOBALSINDEX);
+}
+
+void lregister(lua_State *L, const char *n, lua_CFunction f)
 {
     lua_pushstring(L, n);
     lua_pushcfunction(L, f);
