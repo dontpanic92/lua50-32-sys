@@ -12,8 +12,15 @@ int lcall(lua_State *L, int narg, int clear)
     return status;
 }
 
-void getglobal(lua_State *L, const char *s)
+void lgetglobal(lua_State *L, const char *s)
 {
     lua_pushstring(L, s);
     lua_gettable(L, LUA_GLOBALSINDEX);
+}
+
+void lregister(lua_State *L, const char* n, lua_CFunction* f)
+{
+    lua_pushstring(L, n);
+    lua_pushcfunction(L, f);
+    lua_settable(L, LUA_GLOBALSINDEX);
 }

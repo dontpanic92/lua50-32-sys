@@ -1762,7 +1762,10 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    pub fn getglobal(L: *mut lua_State, s: *const ::std::os::raw::c_char);
+    pub fn lgetglobal(L: *mut lua_State, s: *const ::std::os::raw::c_char);
+}
+extern "C" {
+    pub fn lregister(L: *mut lua_State, n: *const ::std::os::raw::c_char, f: *mut lua_CFunction);
 }
 pub type __builtin_va_list = *mut ::std::os::raw::c_char;
 #[repr(C)]
